@@ -1,6 +1,10 @@
+table, th, td {
+    border: 1px solid lightgray;
+}
 .green {
     color: green;
 }
 .red {
     color: red;
 }
+
