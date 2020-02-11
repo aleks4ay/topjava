@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MealsDaoMemory implements MealsDao {
 
-    private static final List<Meal> mealsData = new CopyOnWriteArrayList<>();
+    private static List<Meal> mealsData = new CopyOnWriteArrayList<>();
 
     public MealsDaoMemory() {
         if (mealsData.isEmpty()) {
@@ -17,12 +17,8 @@ public class MealsDaoMemory implements MealsDao {
     }
 
     @Override
-    public boolean create(Meal meal) {
-        if (readOne(meal.getId()) == null) {
+    public void create(Meal meal) {
             mealsData.add(meal);
-            return true;
-        }
-        return false;
     }
 
     @Override
@@ -38,25 +34,19 @@ public class MealsDaoMemory implements MealsDao {
     }
 
     @Override
-    public boolean update(Meal meal) {
-        if (readOne(meal.getId()) != null) {
+    public void update(Meal meal) {
             Meal oldMeal = readOne(meal.getId());
             int index = mealsData.indexOf(oldMeal);
             mealsData.set(index, meal);
-            create(meal);
-            return true;
-        }
-        return false;
     }
 
     @Override
-    public boolean delete(long id) {
+    public void delete(long id) {
         for (Meal meal: mealsData) {
             if (meal.getId() == id) {
                 mealsData.remove(meal);
-                return true;
+                break;
             }
         }
-        return false;
     }
 }

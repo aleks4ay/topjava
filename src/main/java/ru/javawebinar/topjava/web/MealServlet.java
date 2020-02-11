@@ -44,7 +44,7 @@ public class MealServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        req.setCharacterEncoding("UTF-8");
         if (action.equals("update")) {
             mealsDao.update(new Meal(
                     Integer.parseInt(req.getParameter("id")),
