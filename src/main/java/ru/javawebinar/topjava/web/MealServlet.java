@@ -45,6 +45,8 @@ public class MealServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        log.debug("forward to meals");
+
         String action = request.getParameter("action");
 
         switch (action == null ? "all" : action) {
