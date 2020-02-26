@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static ru.javawebinar.topjava.MealTestData.*;
@@ -82,9 +81,4 @@ public class MealServiceTest {
         List<Meal> all = service.getAll(USER_ID);
         assertMatch(all, MEAL_3, MEAL_2, MEAL);
     }
-
-//    @Test
-//    public void getBetweenHalfOpen() throws Exception{
-//      TODO: 25.02.2020
-//    }
 }
