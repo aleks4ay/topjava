@@ -1,3 +1,6 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/07728f4f9c4d4b77838b6696712286ad)](https://www.codacy.com/manual/aleks4ay/topjava?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aleks4ay/topjava&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/aleks4ay/topjava.svg?branch=master)](https://travis-ci.org/aleks4ay/topjava)
+
 Java Enterprise Online Project
 ===============================
 
