@@ -3,9 +3,8 @@ package ru.javawebinar.topjava.model;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -17,7 +16,7 @@ import java.time.LocalTime;
                 "SELECT m FROM Meal m WHERE m.user=?1 and m.dateTime >= ?2 and m.dateTime < ?3 ORDER BY m.dateTime DESC"),
 })
 @Entity
-@Table(name = "meals", uniqueConstraints = {@UniqueConstraint(columnNames = "date_time", name = "meals_unique_user_datetime_idx")})
+@Table(name = "meals", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"}, name = "meals_unique_user_datetime_idx")})
 public class Meal extends AbstractBaseEntity {
 
     public static final String DELETE = "Meal.delete";
@@ -29,8 +28,7 @@ public class Meal extends AbstractBaseEntity {
     private LocalDateTime dateTime;
 
     @Column(name = "description", nullable = false)
-    @NotBlank
-    @Size(min = 2)
+    @NotEmpty
     private String description;
 
     @Column(name = "calories", nullable = false, columnDefinition = "int default 500")
@@ -38,6 +36,7 @@ public class Meal extends AbstractBaseEntity {
     private int calories;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public Meal() {
