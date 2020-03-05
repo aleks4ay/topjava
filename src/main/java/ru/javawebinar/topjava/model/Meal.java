@@ -11,7 +11,7 @@ import java.time.LocalTime;
 
 @NamedQueries({
         @NamedQuery(name = Meal.DELETE, query = "DELETE FROM Meal m WHERE m.id=:id AND m.user.id=:user_id"),
-        @NamedQuery(name = Meal.ALL_SORTED, query = "SELECT m FROM Meal m WHERE m.user.id=:user_id ORDER BY m.dateTime"),
+        @NamedQuery(name = Meal.ALL_SORTED, query = "SELECT m FROM Meal m WHERE m.user.id=:user_id ORDER BY m.dateTime DESC"),
         @NamedQuery(name = Meal.GET_BETWEEN, query =
                 "SELECT m FROM Meal m WHERE m.user=?1 and m.dateTime >= ?2 and m.dateTime < ?3 ORDER BY m.dateTime DESC"),
 })
@@ -35,6 +35,7 @@ public class Meal extends AbstractBaseEntity {
     @Range(min = 10, max = 10000)
     private int calories;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

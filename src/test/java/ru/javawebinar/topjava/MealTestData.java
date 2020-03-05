@@ -34,4 +34,6 @@ public class MealTestData {
     }
 
     public static TestMatcher<Meal> MEAL_MATCHER = TestMatcher.of();
+
+    public static TestMatcher<Meal> MEAL_MATCHER_WITHOUT_USER = TestMatcher.of("user");
 }
